@@ -1,3 +1,5 @@
+import Router from "./component/Router";
+
 function App() {
 
   // 한국관광공사에서 제공하는 TourAPI를 사용하고
@@ -14,7 +16,7 @@ function App() {
 
   return (
     <div>
-      
+      <Router />
     </div>
   );
 }
