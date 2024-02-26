@@ -7,24 +7,24 @@ function Header() {
     const [menuToggle1, setMenuToggle1] = useState(false);
 
     return (
-        <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <nav class="bg-white border-gray-200 dark:bg-gray-900 py-4">
           <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-              <span class="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">대한민국 이곳저곳</span>
-          </a>
-          <div class="flex md:order-2">
-            <button>
-              <div class="relative hidden md:block">
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <span class="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">대한민국 이곳저곳</span>
+            </a>
+            <div class="flex md:order-2">
+              <button>
+                <div class="relative hidden md:block">
                   <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                   </svg>
                   <span class="sr-only">Search icon</span>
+                </div>
+              </button>
+              <div class="flex items-center space-x-6 rtl:space-x-reverse ml-4">
+                <a href="#" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</a>
               </div>
-            </button>
-            <div class="flex items-center space-x-6 rtl:space-x-reverse ml-4">
-              <a href="#" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</a>
             </div>
-          </div>
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
               <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
