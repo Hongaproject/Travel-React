@@ -1,5 +1,5 @@
 import { useState } from "react";
-import RegionList from "./RegionHome";
+import RegionHome from "./RegionHome";
 
 function Home () {
     // 메인 화면이 보여지는 부분
@@ -25,7 +25,7 @@ function Home () {
                     ))
                 }
             </div>
-            {click && <RegionList />}
+            {!click && <RegionHome />}
         </div>
     );
 }
