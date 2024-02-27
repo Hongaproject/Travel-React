@@ -1,3 +1,5 @@
+import { useState } from "react";
+import RegionList from "./RegionHome";
 
 function Home () {
     // 메인 화면이 보여지는 부분
@@ -7,16 +9,23 @@ function Home () {
     const region = ['서울', '대전', '광주', '대구', '부산', '울산', '인천', '제주']
 
     // 이후 HomeGird 컴포넌트 생성하여 지역 이름 마다 idx를 넘겨주어 지역 이름을 클릭시 밑에 8개의 그리드 화면을 보여주려고 함. 
+ 
+    const [click, setClick] = useState(false);
 
     return(
-        <div className="flex justify-around">
-            {
-                region.map((list, idx) => (
-                    <div key={idx}>
-                        {list}
-                    </div>
-                ))
-            }
+        <div className="mt-20">
+            <div className="flex justify-around">
+                {
+                    region.map((list, idx) => (
+                        <div className="bg-orange-400 border p-7 rounded-full">
+                            <button onClick={()=>setClick(!click)}>
+                                {list}
+                            </button>
+                        </div>
+                    ))
+                }
+            </div>
+            {click && <RegionList />}
         </div>
     );
 }
