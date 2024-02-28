@@ -16,10 +16,10 @@ function Home () {
         <div className="mt-20">
             <div className="flex justify-around">
                 {
-                    region.map((list, idx) => (
+                    region.map((rlist, idx) => (
                         <div className="bg-orange-400 border p-7 rounded-full">
                             <button onClick={()=>setClick(!click)}>
-                                {list}
+                                {rlist}
                             </button>
                         </div>
                     ))

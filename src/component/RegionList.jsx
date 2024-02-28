@@ -1,5 +1,6 @@
 
-function RegionList () {
+function RegionList ({apilist}) {
+
     return(
         <div>
 
