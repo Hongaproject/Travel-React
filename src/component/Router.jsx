@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Footer from "../layout/Footer";
 import Header from "../layout/Header";
 import Home from "./Home";
-import RegionList from "./RegionList";
+import RegionList from "./RegionList/RegionList";
 
 function Router() {
 
