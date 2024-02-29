@@ -12,7 +12,7 @@ function Router() {
           <div className="h-screen w-11/12 mx-auto">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/region-list" element={<RegionList />} />
+              <Route path="/regionlist" element={<RegionList />} />
             </Routes>
           </div>
         <Footer />

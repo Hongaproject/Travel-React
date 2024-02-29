@@ -27,21 +27,18 @@ function RegionHome () {
     return(
         <div className="mt-20 w-11/12 mx-auto">
             <button onClick={()=> navigator('/RegionList')}>더보기</button>
-                <div className="text-center content-center">
-                    <div class="grid grid-cols-4 gap-4">
-                        {
-                            seoulApi.slice(0,8).map((v) => (
-                                <div className="p-10 bg-slate-200">
-                                    {v.title}
-                                    <img src={v.firstimage} />
-                                </div>
-                            ))
-                        }
-                    </div>
+            <div className="text-center content-center">
+                <div class="grid grid-cols-4 gap-4">
+                    {
+                        seoulApi.slice(0,8).map((v) => (
+                            <div className="p-10 bg-slate-200">
+                                {v.title}
+                                <img src={v.firstimage} />
+                            </div>
+                        ))
+                    }
                 </div>
-            <div>
-    
-            </div>
+            </div>  
         </div>
     );
 }
