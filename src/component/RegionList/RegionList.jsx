@@ -4,21 +4,31 @@ import { useEffect, useState } from "react";
 function RegionList () {
 
     const [seoulApi, setSeoulApi] = useState([]);
-    
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+     
     const textAPI = async () => {
         try {
+            setError(null);
+            setSeoulApi(null);
+            setLoading(true);
             const serviceKey = process.env.REACT_APP_serviceKey;
             const res = await axios.get(`https://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=8&pageNo=1&MobileOS=ETC&MobileApp=%EC%84%9C%EC%9A%B8&_type=json&contentTypeId=12&areaCode=1&serviceKey=${serviceKey}`);
             // console.log(res.data.response.body.items.item); 
             setSeoulApi(res.data.response.body.items.item);
         } catch (err) {
-            console.log(err);
+            setError(err);
         }
+        setLoading(false);
     }
 
     useEffect(() => {
         textAPI();
     }, [])
+
+    if (loading) return <div>로딩중..</div>;
+    if (error) return <div>에러가 발생했습니다</div>;
+    if (!seoulApi) return null;
 
     return(
         <div>

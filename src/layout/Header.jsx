@@ -1,17 +1,19 @@
 import classNames from "classnames";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
 
     const [menuToggle, setMenuToggle] = useState(false);
     const [menuToggle1, setMenuToggle1] = useState(false);
+    const navigator = useNavigate();
 
     return (
         <nav class="bg-white border-gray-200 dark:bg-gray-900 py-4">
           <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <button onClick={()=> navigator('/')} class="flex items-center space-x-3 rtl:space-x-reverse">
                 <span class="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">대한민국 이곳저곳</span>
-            </a>
+            </button>
             <div class="flex md:order-2">
               <button>
                 <div class="relative hidden md:block">
