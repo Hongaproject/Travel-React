@@ -30,6 +30,8 @@ function RegionList () {
     if (error) return <div>에러가 발생했습니다</div>;
     if (!seoulApi) return null;
 
+    // axios로 받아온 데이터 select option에 넣어서 데이터 요청작업 정보 찾는 중
+
     return(
         <div>
             <div>
