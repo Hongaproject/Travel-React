@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function DaejeonHome () {
+function ListDaejeon () {
 
     const navigator = useNavigate();
 
@@ -38,7 +38,7 @@ function DaejeonHome () {
             <div className="text-center content-center">
                 <div class="grid grid-cols-4 gap-4">
                     {
-                        daejeonApi.slice(0,8).map((v) => (
+                        daejeonApi.map((v) => (
                             <div className="p-10 bg-slate-200">
                                 {v.title}
                                 <img src={v.firstimage} />
@@ -51,4 +51,4 @@ function DaejeonHome () {
     );
 }
 
-export default DaejeonHome;
+export default ListDaejeon;

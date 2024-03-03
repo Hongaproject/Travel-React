@@ -1,6 +1,12 @@
 import { useState } from "react";
 import RegionHome from "./RegionHomeAPI/RegionHome";
 import DaejeonHome from "./RegionHomeAPI/DaejeonHome";
+import GwangjuHome from "./RegionHomeAPI/GwangjuHome";
+import DaeguHome from "./RegionHomeAPI/DaeguHome";
+import BusanHome from "./RegionHomeAPI/BusanHome";
+import UlsanHome from "./RegionHomeAPI/UlsanHome";
+import IncheonHome from "./RegionHomeAPI/IncheonHome";
+import JejuHome from "./RegionHomeAPI/JejuHome";
 
 
 
@@ -30,12 +36,12 @@ function Home () {
     const selectRegionCP = {
         서울: <RegionHome />,
         대전: <DaejeonHome />,
-        광주: <RegionHome />,
-        대구: <RegionHome />,
-        부산: <RegionHome />,
-        울산: <RegionHome />,
-        인천: <RegionHome />,
-        제주: <RegionHome />,
+        광주: <GwangjuHome />,
+        대구: <DaeguHome />,
+        부산: <BusanHome />,
+        울산: <UlsanHome />,
+        인천: <IncheonHome />,
+        제주: <JejuHome />,
     }
 
     // 이후 HomeGird 컴포넌트 생성하여 지역 이름 마다 idx를 넘겨주어 지역 이름을 클릭시 밑에 8개의 그리드 화면을 보여주려고 함. 

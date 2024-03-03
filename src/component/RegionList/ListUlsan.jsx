@@ -2,23 +2,23 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function DaejeonHome () {
+function ListUlsan () {
 
     const navigator = useNavigate();
 
-    const [daejeonApi, setDaejeonApi] = useState([]);
+    const [ulsanApi, setUlsanApi] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     
     const textAPI = async () => {
         try {
             setError(null);
-            setDaejeonApi(null);
+            setUlsanApi(null);
             setLoading(true);
             const serviceKey = process.env.REACT_APP_serviceKey;
             const res = await axios.get(`https://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=8&pageNo=1&MobileOS=ETC&MobileApp=%EC%84%9C%EC%9A%B8&_type=json&contentTypeId=12&areaCode=1&serviceKey=${serviceKey}`);
             // console.log(res.data.response.body.items.item); 
-            setDaejeonApi(res.data.response.body.items.item);
+            setUlsanApi(res.data.response.body.items.item);
         } catch (err) {
             setError(err);
         }
@@ -31,14 +31,14 @@ function DaejeonHome () {
 
     if (loading) return <div>로딩중..</div>;
     if (error) return <div>에러가 발생했습니다</div>;
-    if (!daejeonApi) return null;
+    if (!ulsanApi) return null;
     return(
         <div className="mt-20 w-11/12 mx-auto">
             <button onClick={()=> navigator('/RegionList')}>더보기</button>
             <div className="text-center content-center">
                 <div class="grid grid-cols-4 gap-4">
                     {
-                        daejeonApi.slice(0,8).map((v) => (
+                        ulsanApi.map((v) => (
                             <div className="p-10 bg-slate-200">
                                 {v.title}
                                 <img src={v.firstimage} />
@@ -51,4 +51,4 @@ function DaejeonHome () {
     );
 }
 
-export default DaejeonHome;
+export default ListUlsan;
