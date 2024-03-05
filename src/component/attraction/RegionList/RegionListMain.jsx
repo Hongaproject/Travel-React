@@ -28,6 +28,7 @@ function RegionListMain () {
         setSelected(e.target.value);
     };
 
+    // 요청정보 갯수가 많아질 예정이라 무한 스크롤을 사용해서 보여주려고 함.
    
     return(
         <div>

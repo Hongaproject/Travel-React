@@ -8,7 +8,8 @@ import RegionDetail from "./attraction/RegionDetail/RegionDetail";
 function Router() {
 
     // 지역코드 서울 1 인천 2 대전 3 대구 4 광주 5 부산 6 울산 7 제주 39
-    // 데이터 전용 파일을 생성해서 Api 전송하기
+    // 데이터 전용 파일을 생성해서 Api 전송
+    // Router파일서 API 데이터를 props하여 디테일 파일에 전달하여 세부 페이지 작업 예정
 
     return (
       <>
