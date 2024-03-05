@@ -1,12 +1,12 @@
 import { useState } from "react";
-import RegionHome from "./RegionHomeAPI/RegionHome";
-import DaejeonHome from "./RegionHomeAPI/DaejeonHome";
-import GwangjuHome from "./RegionHomeAPI/GwangjuHome";
-import DaeguHome from "./RegionHomeAPI/DaeguHome";
-import BusanHome from "./RegionHomeAPI/BusanHome";
-import UlsanHome from "./RegionHomeAPI/UlsanHome";
-import IncheonHome from "./RegionHomeAPI/IncheonHome";
-import JejuHome from "./RegionHomeAPI/JejuHome";
+import RegionHome from "./attraction/RegionHomeAPI/RegionHome";
+import DaejeonHome from "./attraction/RegionHomeAPI/DaejeonHome";
+import GwangjuHome from "./attraction/RegionHomeAPI/GwangjuHome";
+import DaeguHome from "./attraction/RegionHomeAPI/DaeguHome";
+import BusanHome from "./attraction/RegionHomeAPI/BusanHome";
+import UlsanHome from "./attraction/RegionHomeAPI/UlsanHome";
+import IncheonHome from "./attraction/RegionHomeAPI/IncheonHome";
+import JejuHome from "./attraction/RegionHomeAPI/JejuHome";
 
 
 
@@ -47,7 +47,7 @@ function Home () {
     // 이후 HomeGird 컴포넌트 생성하여 지역 이름 마다 idx를 넘겨주어 지역 이름을 클릭시 밑에 8개의 그리드 화면을 보여주려고 함. 
     
     return(
-        <div className="mt-20">
+        <div className="h-full mt-20">
             <div className="flex justify-around">
                 {
                     region.map((rlist) => (

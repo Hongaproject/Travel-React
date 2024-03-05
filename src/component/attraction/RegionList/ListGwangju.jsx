@@ -29,7 +29,7 @@ function ListGwangju () {
         textAPI();
     }, [])
 
-    if (loading) return <div>로딩중..</div>;
+    if (loading) return <div className="h-screen flex flex-col items-center "><div className="mx-0 my-auto"><img src="/Spinner.gif" width="100%"/></div></div>;
     if (error) return <div>에러가 발생했습니다</div>;
     if (!gwangjuApi) return null;
     return(

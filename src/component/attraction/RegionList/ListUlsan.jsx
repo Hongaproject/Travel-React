@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function UlsanHome () {
+function ListUlsan () {
 
     const navigator = useNavigate();
 
@@ -28,8 +28,8 @@ function UlsanHome () {
     useEffect(() => {
         textAPI();
     }, [])
-
-    if (loading) return <div>로딩중..</div>;
+    
+    if (loading) return <div className="h-screen flex flex-col items-center "><div className="mx-0 my-auto"><img src="/Spinner.gif" width="100%"/></div></div>;
     if (error) return <div>에러가 발생했습니다</div>;
     if (!ulsanApi) return null;
     return(
@@ -38,7 +38,7 @@ function UlsanHome () {
             <div className="text-center content-center">
                 <div class="grid grid-cols-4 gap-4">
                     {
-                        ulsanApi.slice(0,8).map((v) => (
+                        ulsanApi.map((v) => (
                             <div className="p-10 bg-slate-200">
                                 {v.title}
                                 <img src={v.firstimage} />
@@ -51,4 +51,4 @@ function UlsanHome () {
     );
 }
 
-export default UlsanHome;
+export default ListUlsan;
