@@ -69,6 +69,8 @@ function ListSeoul () {
                             <p>{list.title}</p>
                         </div>
                     ))}
+                    <div id="observer" className="h-3"></div>
+                </div>
                     {loading && 
                         <div className="h-screen flex flex-col justify-center items-center ">
                             <div className="mx-0 my-auto">
@@ -76,8 +78,6 @@ function ListSeoul () {
                             </div>
                         </div>
                     }
-                    <div id="observer" className="h-3"></div>
-                </div>
             </div>  
         </div>
     );
