@@ -6,7 +6,7 @@ function ListSeoul () {
     const [seoulApi, setSeoulApi] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
      
     useEffect(() => {
         textAPI();
@@ -17,7 +17,8 @@ function ListSeoul () {
         setLoading(true);
         try {
             const serviceKey = process.env.REACT_APP_serviceKey;
-            const res = await axios.get(`https://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=30&MobileOS=ETC&MobileApp=seoul&_type=json&contentTypeId=12&areaCode=1&serviceKey=${serviceKey}`);
+            const res = await axios.get(`https://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=30&pageNo=${page}&&MobileOS=ETC&MobileApp=seoul&_type=json&contentTypeId=12&areaCode=1&serviceKey=${serviceKey}`);
+            
             // console.log(res.data.response.body.items.item); 
             const newData = res.data.response.body.items.item.map((list) => ({
                 title: list.title,
