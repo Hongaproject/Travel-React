@@ -28,24 +28,34 @@ function ListIncheon () {
     useEffect(() => {
         textAPI();
     }, [])
+
+    const imgOnError = (e) => {
+        e.target.src = `/img_none.png`;
+    }
     
-    if (loading) return <div className="h-screen flex flex-col items-center "><div className="mx-0 my-auto"><img src="/Spinner.gif" width="100%"/></div></div>;
+    // if (loading) return <div className="h-screen flex flex-col items-center "><div className="mx-0 my-auto"><img src="/Spinner.gif" width="100%"/></div></div>;
     if (error) return <div>에러가 발생했습니다</div>;
     if (!incheonApi) return null;
     return(
         <div className="mt-20 w-11/12 mx-auto">
-            <button onClick={()=> navigator('/RegionList')}>더보기</button>
             <div className="text-center content-center">
                 <div class="grid grid-cols-4 gap-4">
-                    {
-                        incheonApi.map((v) => (
-                            <div className="p-10 bg-slate-200">
-                                {v.title}
-                                <img src={v.firstimage} />
-                            </div>
-                        ))
-                    }
+                    {incheonApi &&
+                        incheonApi.map((list) => (
+                        <div key={list.contentid} >
+                            <p className="mb-4">{list.title}</p>
+                            <img src={list.firstimage} className="rounded-t-xl w-[700px] h-[250px] object-cover" onError={imgOnError}/>
+                        </div>
+                    ))}
+                    <div id="observer" className="h-3"></div>
                 </div>
+                    {loading && 
+                        <div className="h-screen flex flex-col justify-center items-center ">
+                            <div className="mx-0 my-auto">
+                                <img src="/Spinner.gif" width="100%" />
+                            </div>
+                        </div>
+                    }
             </div>  
         </div>
     );

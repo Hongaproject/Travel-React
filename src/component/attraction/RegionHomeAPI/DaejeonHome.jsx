@@ -29,6 +29,10 @@ function DaejeonHome () {
         textAPI();
     }, [])
     
+    const imgOnError = (e) => {
+        e.target.src = `/img_none.png`;
+    }
+
     if (loading) return <div className="h-screen flex flex-col items-center "><div className="mx-0 my-auto"><img src="/Spinner.gif" width="100%"/></div></div>;
     if (error) return <div>에러가 발생했습니다</div>;
     if (!daejeonApi) return null;
@@ -41,8 +45,9 @@ function DaejeonHome () {
                         daejeonApi.slice(0,8).map((v) => (
                             <div className="p-10 bg-slate-200">
                                 <h2 className="mb-4">{v.title}</h2>
-                                <img src={v.firstimage} className="mb-4"/>
+                                <img src={v.firstimage} className="mb-4 rounded-t-xl w-[300px] h-[180px]" onError={imgOnError}/>
                                 <h3>{v.addr1}</h3>
+                                id: {v.contentid}
                             </div>
                         ))
                     }
