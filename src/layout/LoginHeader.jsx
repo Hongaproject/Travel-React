@@ -1,11 +1,20 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getAuth, signOut } from "firebase/auth";
+import { authService } from "../firebase";
 
-function Header() {
+
+function LoginHeader({userObj}) {
 
     const [menuToggle, setMenuToggle] = useState(false);
     const [menuToggle1, setMenuToggle1] = useState(false);
     const navigator = useNavigate();
+
+    const onLogOutClick = () => {
+      authService.signOut();
+      navigator('/');
+    };
+    
 
     return (
         <nav class="bg-white border-gray-200 dark:bg-gray-900 py-4">
@@ -23,7 +32,8 @@ function Header() {
                 </div>
               </button>
               <div class="flex items-center space-x-6 rtl:space-x-reverse ml-4">
-                <button onClick={()=> navigator('/login')} class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</button>
+                <h3 class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">{userObj.displayName}</h3>
+                <button onClick={onLogOutClick}>Log Out</button>
               </div>
             </div>
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
@@ -95,5 +105,5 @@ function Header() {
     );
   }
   
-  export default Header;
+  export default LoginHeader;
   

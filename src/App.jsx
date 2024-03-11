@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import Router from "./component/Router";
+import { authService } from "./firebase";
 
 function App() {
 
@@ -14,9 +16,31 @@ function App() {
   // tailwind CSS
   // firebase
 
+  const [init, setInit] = useState(false);
+  const [userObj, setUserObj] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      console.log(user); // 유저 나타나는지 확인용
+      if(user){
+        setIsLoggedIn(true);
+        // setLogin(true); // 로그인
+        setUserObj({ // firebase의 특정 부분만 가져와서 react한테 줌
+          displayName: user.displayName,
+          uid:user.uid,
+          updateProfile: (args) => user.updateProfile(args),
+        }); // onAuthStateChanged를 작동시켜 user를 받음 
+      }else{
+        setIsLoggedIn(false);
+      }
+      setInit(true); 
+    })
+  }, []);
+
   return (
     <div>
-      <Router />
+      {init ? <Router isLoggedIn={isLoggedIn} userObj={userObj} /> : "Loading..."}
     </div>
   );
 }
