@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function GwangjuHome () {
 
@@ -43,11 +43,13 @@ function GwangjuHome () {
                 <div class="grid grid-cols-4 gap-4">
                     {
                         gwangjuApi.slice(0,8).map((v) => (
-                            <div className="p-10 bg-slate-200">
-                                <h2 className="mb-4">{v.title}</h2>
-                                <img src={v.firstimage} className="mb-4 rounded-t-xl w-[300px] h-[180px]" onError={imgOnError}/>
-                                <h3>{v.addr1}</h3>
-                                id: {v.contentid}
+                            <div className="p-10 bg-slate-200" key={v.contentid}>
+                                <Link to={`/DetailGwangju/${v.contentid}`} >
+                                    <h2 className="mb-4">{v.title}</h2>
+                                    <img src={v.firstimage} className="mb-4 rounded-t-xl w-[300px] h-[180px]" onError={imgOnError}/>
+                                    <h3>{v.addr1}</h3>
+                                    id: {v.contentid}
+                                </Link>
                             </div>
                         ))
                     }

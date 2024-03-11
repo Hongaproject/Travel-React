@@ -7,8 +7,14 @@ function DetailSeoul () {
     const {idx} = useParams();
     const [seoulApi, setSeoulApi] = useState([]);
     const [seoulApi1, setSeoulApi1] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const textAPI = async () => {
+            setError(null);
+            setSeoulApi(null);
+            setSeoulApi1(null);
+            setLoading(true);
         try {
             const serviceKey = process.env.REACT_APP_serviceKey;
             const res = await axios.get(`https://apis.data.go.kr/B551011/KorService1/detailCommon1?MobileOS=ETC&MobileApp=seoul&_type=json&contentId=${idx}&contentTypeId=12&defaultYN=Y&firstImageYN=Y&addrinfoYN=Y&overviewYN=Y&serviceKey=${serviceKey}`);
@@ -17,16 +23,21 @@ function DetailSeoul () {
             setSeoulApi(res.data.response.body.items.item);
             setSeoulApi1(res1.data.response.body.items.item);
         } catch (err) {
-            console.log(err); 
+            setError(err); 
         }
+        setLoading(false);
     }
 
     useEffect(() => {
         textAPI();
     }, [])
 
+    if (loading) return <div className="h-screen flex flex-col items-center "><div className="mx-0 my-auto"><img src="/Spinner.gif" width="100%"/></div></div>;
+    if (error) return <div>에러가 발생했습니다</div>;
+    if (!seoulApi) return null;
+    if (!seoulApi1) return null;
     return (
-        <div>
+        <div className="my-20 w-11/12 mx-auto">
             <h1 className="text-2xl">상세설명</h1>
             {
                 seoulApi.map((v) => (
