@@ -3,7 +3,7 @@ import Footer from "../layout/Footer";
 import Header from "../layout/Header";
 import Home from "./Home";
 import RegionListMain from "./attraction/RegionList/RegionListMain";
-import RegionDetail from "./attraction/RegionDetail/RegionDetail";
+import DetailSeoul from "./attraction/RegionDetail/DetailSeoul";
 
 function Router() {
 
@@ -18,7 +18,7 @@ function Router() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/regionlist" element={<RegionListMain />} />
-              <Route path="/regiondetail/:id" element={<RegionDetail />} />
+              <Route path="/DetailSeoul/:idx" element={<DetailSeoul />} />
             </Routes>
           </div>
         <Footer />

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function ListSeoul () {
 
@@ -18,8 +19,6 @@ function ListSeoul () {
         try {
             const serviceKey = process.env.REACT_APP_serviceKey;
             const res = await axios.get(`https://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=30&pageNo=${page}&&MobileOS=ETC&MobileApp=seoul&_type=json&contentTypeId=12&areaCode=1&serviceKey=${serviceKey}`);
-            
-            console.log(res.data.response.body.items.item); 
             const newData = res.data.response.body.items.item.map((list) => ({
                 title: list.title,
                 firstimage: list.firstimage,
@@ -69,8 +68,10 @@ function ListSeoul () {
                     {seoulApi &&
                         seoulApi.map((list) => (
                         <div key={list.contentid} >
-                            <p className="mb-4">{list.title}</p>
-                            <img src={list.firstimage} className="rounded-t-xl w-[700px] h-[250px] object-cover" onError={imgOnError}/>
+                            <Link to={`/DetailSeoul/${list.contentid}`}>
+                                <p className="mb-4">{list.title}</p>
+                                <img src={list.firstimage} className="rounded-t-xl w-[700px] h-[250px] object-cover" onError={imgOnError}/>
+                            </Link>
                         </div>
                     ))}
                     <div id="observer" className="h-3"></div>
