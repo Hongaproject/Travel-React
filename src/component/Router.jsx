@@ -11,6 +11,7 @@ import DetailBusan from "./attraction/RegionDetail/DetailBusan";
 import DetailUlsan from "./attraction/RegionDetail/DetailUlsan";
 import DetailInchoen from "./attraction/RegionDetail/DetailInchoen";
 import DetailJeju from "./attraction/RegionDetail/DetailJeju";
+import Login from "../logsig/login";
 
 function Router() {
 
@@ -24,6 +25,7 @@ function Router() {
           <div className="h-full w-11/12 mx-auto">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/regionlist" element={<RegionListMain />} />
               <Route path="/DetailSeoul/:idx" element={<DetailSeoul />} />
               <Route path="/DetailDaejeon/:idx" element={<DetailDeajeon />} />

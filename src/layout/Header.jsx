@@ -24,7 +24,7 @@ function Header() {
                 </div>
               </button>
               <div class="flex items-center space-x-6 rtl:space-x-reverse ml-4">
-                <a href="#" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</a>
+                <button onClick={()=> navigator('/login')} class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</button>
               </div>
             </div>
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
