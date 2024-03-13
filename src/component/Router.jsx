@@ -20,6 +20,7 @@ function Router({isLoggedIn, userObj}) {
     // 데이터 전용 파일을 생성해서 Api 전송
     // Router파일서 API 데이터를 props하여 디테일 파일에 전달하여 세부 페이지 작업 예정
 
+    // 로그인 화면 재구상 중.
     return (
       <>
         {isLoggedIn ? <LoginHeader userObj={userObj} /> : <Header />}
