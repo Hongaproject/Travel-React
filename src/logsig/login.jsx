@@ -46,6 +46,8 @@ function Login () {
     // form태그와 input태그로 회원가입을 작성함
     // onChange 메소드로 input의 text 내용 변화를 감지함.
 
+    // 파이어베이스를 사용하여 댓글과 좋아요 기능 추가하려고 함.
+
     return (
         <div>
             <span onClick={toggleAccount}>{newAccount? "현재 회원가입 창" : "현재 로그인 창"} 클릭 시 변경됩니다.</span>
