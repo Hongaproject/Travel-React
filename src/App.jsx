@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Router from "./component/Router";
 import { authService } from "./firebase";
+import { useNavigate } from "react-router-dom";
 
 function App() {
 
@@ -19,12 +20,14 @@ function App() {
   const [init, setInit] = useState(false);
   const [userObj, setUserObj] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigator = useNavigate();
 
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       console.log(user); // 유저 나타나는지 확인용
       if(user){
         setIsLoggedIn(true); // 로그인
+        navigator("/");
         setUserObj({ // firebase의 특정 부분만 가져와서 react한테 줌
           displayName: user.displayName,
           uid:user.uid,
