@@ -61,6 +61,13 @@ function DetailSeoul () {
                     </div>
                 ))
             }
+            <div>
+                좋아요
+            </div>
+            <div>
+                <input type="text" placeholder="댓글을 입력해주세요."/>
+                <button>게시</button>
+            </div>
         </div>
     );
 }

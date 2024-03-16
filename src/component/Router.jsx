@@ -26,18 +26,6 @@ function Router({isLoggedIn, userObj}) {
         {isLoggedIn ? <LoginHeader userObj={userObj} /> : <Header />}
           <div className="h-full w-11/12 mx-auto">
             <Routes>
-              {/* {
-                isLoggedIn ? (
-                  <>
-                    <Route exact path="/" element={<Home />} /> 
-                  </>
-                ) : (
-                  <>
-                    <Route exact path="/" element={<Login />} />
-                  </>
-                  
-                )
-              }  */}
               <Route path="/" element={<Home />} /> 
               <Route path="/login" element={<Login />} />
               <Route path="/regionlist" element={<RegionListMain />} />
