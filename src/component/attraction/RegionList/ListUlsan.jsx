@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function ListUlsan () {
 
@@ -67,8 +68,10 @@ function ListUlsan () {
                     {ulsanApi &&
                         ulsanApi.map((list) => (
                         <div key={list.contentid} >
-                            <p className="mb-4">{list.title}</p>
-                            <img src={list.firstimage} className="rounded-t-xl w-[700px] h-[250px] object-cover" onError={imgOnError}/>
+                            <Link to={`/DetailUlsan/${list.contentid}`}>
+                                <p className="mb-4">{list.title}</p>
+                                <img src={list.firstimage} className="rounded-t-xl w-[700px] h-[250px] object-cover" onError={imgOnError}/>
+                            </Link>
                         </div>
                     ))}
                     <div id="observer" className="h-3"></div>
