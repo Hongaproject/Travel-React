@@ -15,12 +15,16 @@ function ListDaejeon () {
     const textAPI = async () => {
         try {
             setError(null);
-            setDaejeonApi(null);
             setLoading(true);
             const serviceKey = process.env.REACT_APP_serviceKey;
-            const res = await axios.get(`https://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=30&pageNo=${page}&&MobileOS=ETC&MobileApp=daejeon&_type=json&contentTypeId=12&areaCode=1&serviceKey=${serviceKey}`);
+            const res = await axios.get(`https://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=30&pageNo=${page}&&MobileOS=ETC&MobileApp=daejeon&_type=json&contentTypeId=12&areaCode=3&serviceKey=${serviceKey}`);
             // console.log(res.data.response.body.items.item); 
-            setDaejeonApi(res.data.response.body.items.item);
+            const newData = res.data.response.body.items.item.map((list) => ({
+                title: list.title,
+                firstimage: list.firstimage,
+                contentid: list.contentid
+              }));
+            setDaejeonApi((prevData) => [...prevData, ...newData]);
         } catch (err) {
             setError(err);
         }
