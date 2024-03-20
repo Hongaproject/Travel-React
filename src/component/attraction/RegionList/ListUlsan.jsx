@@ -1,14 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function ListUlsan () {
-
-    const navigator = useNavigate();
 
     const [ulsanApi, setUlsanApi] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [page, setPage] = useState(1);
+    
+    useEffect(() => {
+        textAPI();
+    }, [page]);
     
     const textAPI = async () => {
         try {
@@ -25,9 +27,27 @@ function ListUlsan () {
         setLoading(false);
     }
 
+    // Intersection Observer 설정
+    const handleObserver = (entries) => {
+        const target = entries[0];
+        console.log(entries);
+
+        if (target.isIntersecting && !loading) {
+        setPage((prevPage) => prevPage + 1);
+        }
+    };
+
     useEffect(() => {
-        textAPI();
-    }, [])
+        const observer = new IntersectionObserver(handleObserver, {
+        threshold: 0,
+        });
+
+        const observerTarget = document.getElementById("observer");
+
+        if (observerTarget) {
+        observer.observe(observerTarget);
+        }
+    }, []);
     
     const imgOnError = (e) => {
         e.target.src = `/img_none.png`;

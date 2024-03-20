@@ -1,22 +1,24 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function ListDaejeon () {
-
-    const navigator = useNavigate();
 
     const [daejeonApi, setDaejeonApi] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [page, setPage] = useState(1);
     
+    useEffect(() => {
+        textAPI();
+    }, [page]);
+
     const textAPI = async () => {
         try {
             setError(null);
             setDaejeonApi(null);
             setLoading(true);
             const serviceKey = process.env.REACT_APP_serviceKey;
-            const res = await axios.get(`https://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=8&pageNo=1&MobileOS=ETC&MobileApp=%EC%84%9C%EC%9A%B8&_type=json&contentTypeId=12&areaCode=1&serviceKey=${serviceKey}`);
+            const res = await axios.get(`https://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=30&pageNo=${page}&&MobileOS=ETC&MobileApp=daejeon&_type=json&contentTypeId=12&areaCode=1&serviceKey=${serviceKey}`);
             // console.log(res.data.response.body.items.item); 
             setDaejeonApi(res.data.response.body.items.item);
         } catch (err) {
@@ -25,9 +27,27 @@ function ListDaejeon () {
         setLoading(false);
     }
 
+    // Intersection Observer 설정
+    const handleObserver = (entries) => {
+        const target = entries[0];
+        console.log(entries);
+
+        if (target.isIntersecting && !loading) {
+          setPage((prevPage) => prevPage + 1);
+        }
+      };
+    
     useEffect(() => {
-        textAPI();
-    }, [])
+        const observer = new IntersectionObserver(handleObserver, {
+          threshold: 0,
+        });
+
+        const observerTarget = document.getElementById("observer");
+
+        if (observerTarget) {
+          observer.observe(observerTarget);
+        }
+    }, []);
 
     const imgOnError = (e) => {
         e.target.src = `/img_none.png`;
@@ -36,6 +56,7 @@ function ListDaejeon () {
     // if (loading) return <div className="h-screen flex flex-col items-center "><div className="mx-0 my-auto"><img src="/Spinner.gif" width="100%"/></div></div>;
     if (error) return <div>에러가 발생했습니다</div>;
     if (!daejeonApi) return null;
+
     return(
         <div className="mt-20 w-11/12 mx-auto">
             <div className="text-center content-center">

@@ -11,7 +11,7 @@ import DetailBusan from "./attraction/RegionDetail/DetailBusan";
 import DetailUlsan from "./attraction/RegionDetail/DetailUlsan";
 import DetailInchoen from "./attraction/RegionDetail/DetailInchoen";
 import DetailJeju from "./attraction/RegionDetail/DetailJeju";
-import Login from "../logsig/login";
+import Login from "../logsig/Login";
 import LoginHeader from "../layout/LoginHeader";
 
 function Router({isLoggedIn, userObj}) {
