@@ -9,6 +9,7 @@ function RegionHome () {
     const [seoulApi, setSeoulApi] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [page, setPage] = useState(3);
     
     const textAPI = async () => {
         try {
@@ -16,7 +17,7 @@ function RegionHome () {
             setSeoulApi(null);
             setLoading(true);
             const serviceKey = process.env.REACT_APP_serviceKey;
-            const res = await axios.get(`https://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=30&pageNo=1&MobileOS=ETC&MobileApp=seoul&_type=json&contentTypeId=12&areaCode=1&serviceKey=${serviceKey}`);
+            const res = await axios.get(`https://apis.data.go.kr/B551011/KorService1/areaBasedList1?numOfRows=30&pageNo=${page}&&MobileOS=ETC&MobileApp=seoul&_type=json&contentTypeId=12&areaCode=1&serviceKey=${serviceKey}`);
             // console.log(res.data.response.body.items.item); 
             setSeoulApi(res.data.response.body.items.item);
             // console.log(res.data); 
