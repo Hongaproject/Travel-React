@@ -35,12 +35,6 @@ function DetailGwangju () {
     if (error) return <div>에러가 발생했습니다</div>;
     if (!gwangjuApi) return null;
     if (!gwangjuApi1) return null;
-
-    const url = gwangjuApi[0].homepage;
-    const url1 = gwangjuApi[0].homepage.split("/");
-    // console.log(`https://${url}`);
-    console.log(url);
-    console.log(url1);
     
     return (
         <div className="my-20 w-11/12 mx-auto">
@@ -60,7 +54,7 @@ function DetailGwangju () {
             {
                 gwangjuApi1.map((q) => (
                     <div>
-                        <h2 className="mb-4">전화번호: {q.infocenter.split("<br>").join("")}</h2>
+                        <h2 className="mb-4">전화번호: {q.infocenter.split("<br />").join("")}</h2>
                         <h2 className="mb-4">주차장: {q.parking.split("<br>").join("")}</h2>
                         <h3 className="mb-4">휴일: {q.restdate.split("<br>").join("")}</h3>
                         <h3 className="mb-4">개방 시간: {q.usetime.split("<br>").join("")}</h3>
